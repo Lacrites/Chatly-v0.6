@@ -1,0 +1,151 @@
+/* Aplicamos box-sizing a todos los elementos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;  /* Color de fondo suave */
+  margin: 0;
+}
+
+input {
+  padding: 8px;
+  margin: 8px 0;  /* Reducido margen para no dar mucho espacio vertical */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 16px);  /* Asegura que el input ocupe el 100% del contenedor */
+}
+
+button {
+  margin: 8px 0;  /* Un poco menos de margen vertical */
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;  /* Color de fondo más oscuro al pasar el ratón */
+}
+
+button:active {
+  background-color: #003f7f;  /* Color de fondo aún más oscuro cuando se presiona el botón */
+}
+
+#status-indicator {
+  font-size: 14px;
+  color: gray; /* Color predeterminado */
+  visibility: visible; /* Asegura que esté visible */
+}
+
+#messages {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  height: 200px;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 14px;  /* Tamaño de fuente legible */
+}
+
+#video-container {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  background-color: #111;
+  display: none;  /* Ocultar por defecto hasta que se active la cámara */
+}
+
+#video {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+#canvas {
+  display: none;
+}
+
+@keyframes shake {
+  0% { transform: translate(2px, 2px); }
+  25% { transform: translate(-2px, 2px); }
+  50% { transform: translate(2px, -2px); }
+  75% { transform: translate(-2px, -2px); }
+  100% { transform: translate(0, 0); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;  /* Añadí ease-in-out para suavizar el movimiento */
+}
+
+/* Mejoras para dispositivos móviles */
+@media (max-width: 600px) {
+  body {
+    padding: 10px;  /* Reduce el padding para móviles */
+  }
+
+  #messages {
+    height: 150px;  /* Menor altura para mensajes en pantallas pequeñas */
+  }
+
+  #video-container {
+    max-width: 100%;  /* Asegura que el contenedor de video ocupe el 100% en móviles */
+  }
+
+  #status-indicator {
+    font-size: 12px;  /* Ajuste para pantallas más pequeñas */
+    padding: 4px 0;   /* Añadir espacio para que no se vea apretado */
+    white-space: nowrap; /* Evita que se rompa el texto */
+  }
+
+  input, button {
+    width: 100%;  /* Ocupa el 100% del ancho disponible en móviles */
+  }
+
+  button {
+    padding: 10px; /* Un poco más de padding para móviles para mejorar la usabilidad */
+  }
+
+  #video-container {
+    margin-bottom: 10px; /* Añadir margen para separar el video de los botones */
+  }
+
+  .messages {
+    font-size: 14px;  /* Mejora la legibilidad en pantallas pequeñas */
+  }
+}
+
+/* Mejora para dispositivos muy pequeños (pantallas menores a 320px) */
+@media (max-width: 320px) {
+  body {
+    padding: 5px;  /* Reduce aún más el padding */
+  }
+
+  #messages {
+    height: 120px;  /* Menor altura en pantallas aún más pequeñas */
+  }
+
+  button {
+    padding: 8px;  /* Ajusta el tamaño de los botones */
+  }
+
+  #video-container {
+    max-width: 100%;
+    margin-bottom: 5px; /* Ajusta el espacio debajo del video */
+  }
+}
